@@ -167,6 +167,28 @@ function closeModal(modalId) {
   if (modal) modal.classList.remove('active');
 }
 
+function openHowToUseGuide() {
+  if (AppState.currentView !== 'dashboard') {
+    switchView('dashboard');
+  }
+  const section = document.getElementById('banglaGuideSection');
+  if (section) {
+    section.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    section.style.borderColor = 'var(--accent-red)';
+    section.style.boxShadow = '0 0 0 3px rgba(197, 78, 78, 0.25), 0 8px 24px rgba(0,0,0,0.08)';
+    setTimeout(() => {
+      section.style.borderColor = '';
+      section.style.boxShadow = '';
+    }, 2000);
+  } else {
+    openModal('howToUseModal');
+  }
+}
+
+function openHowToUseModal() {
+  openModal('howToUseModal');
+}
+
 /**
  * Initialize Application
  */

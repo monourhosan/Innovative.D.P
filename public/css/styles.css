@@ -517,6 +517,176 @@ body {
   border-radius: var(--radius-lg);
 }
 
+/* How to Use Button with Red Pulse Sonar Animation */
+.btn-how-to-use {
+  background: var(--accent-red);
+  color: #FFFFFF !important;
+  border: 1px solid #A83838;
+  font-family: inherit;
+  font-size: 13px;
+  font-weight: 700;
+  padding: 8px 16px;
+  border-radius: var(--radius-md);
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  position: relative;
+  text-decoration: none;
+  white-space: nowrap;
+  user-select: none;
+  animation: redSonarPulse 2s infinite cubic-bezier(0.25, 0.8, 0.25, 1);
+  transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.btn-how-to-use:hover {
+  background: #B53E3E;
+  color: #FFFFFF !important;
+  transform: translateY(-2px) scale(1.03);
+  box-shadow: 0 6px 18px rgba(197, 78, 78, 0.45);
+}
+
+.btn-how-to-use:active {
+  transform: translateY(1px) scale(0.98);
+  box-shadow: 0 2px 6px rgba(197, 78, 78, 0.3);
+}
+
+.btn-how-to-use.btn-sm {
+  padding: 5px 12px;
+  font-size: 11.5px;
+}
+
+@keyframes redSonarPulse {
+  0% {
+    box-shadow: 0 0 0 0 rgba(197, 78, 78, 0.8), 0 2px 5px rgba(0, 0, 0, 0.1);
+  }
+  60% {
+    box-shadow: 0 0 0 10px rgba(197, 78, 78, 0), 0 4px 12px rgba(197, 78, 78, 0.35);
+  }
+  100% {
+    box-shadow: 0 0 0 0 rgba(197, 78, 78, 0), 0 2px 5px rgba(0, 0, 0, 0.1);
+  }
+}
+
+.red-beacon-dot {
+  width: 8px;
+  height: 8px;
+  background-color: #FFFFFF;
+  border-radius: 50%;
+  display: inline-block;
+  box-shadow: 0 0 4px #FFFFFF;
+  animation: redBeaconPing 1.2s infinite ease-in-out;
+  flex-shrink: 0;
+}
+
+@keyframes redBeaconPing {
+  0%, 100% {
+    transform: scale(0.85);
+    opacity: 0.85;
+  }
+  50% {
+    transform: scale(1.35);
+    opacity: 1;
+    box-shadow: 0 0 8px #FFFFFF;
+  }
+}
+
+/* Bangla Guide Card Styles */
+.bangla-guide-card {
+  margin-bottom: 28px;
+  border: 1px solid var(--accent-sand);
+  background: #FFFFFF;
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-sm);
+  overflow: hidden;
+  transition: all 0.25s ease;
+}
+
+.bangla-guide-card:hover {
+  box-shadow: var(--shadow-md);
+  border-color: var(--accent-taupe);
+}
+
+.bangla-step-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 16px;
+}
+
+.bangla-step-item {
+  background: var(--bg-panel-subtle);
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-md);
+  padding: 18px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+  position: relative;
+  overflow: hidden;
+}
+
+.bangla-step-item:hover {
+  background: #FFFFFF;
+  border-color: var(--primary);
+  transform: translateY(-2px);
+  box-shadow: 0 6px 14px rgba(93, 134, 108, 0.12);
+}
+
+.bangla-step-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 10px;
+}
+
+.bangla-step-num {
+  font-size: 11.5px;
+  font-weight: 800;
+  text-transform: uppercase;
+  color: var(--primary);
+  background: var(--primary-light);
+  border: 1px solid var(--primary-border);
+  padding: 3px 9px;
+  border-radius: var(--radius-full);
+  letter-spacing: 0.5px;
+}
+
+.bangla-step-badge {
+  font-size: 11px;
+  font-weight: 700;
+  color: var(--text-muted);
+  background: var(--bg-main);
+  padding: 2px 7px;
+  border-radius: var(--radius-sm);
+  border: 1px solid var(--border-color);
+}
+
+.bangla-step-title {
+  font-size: 14.5px;
+  font-weight: 700;
+  color: var(--text-main);
+  margin-bottom: 8px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.bangla-step-desc {
+  font-size: 12.8px;
+  color: var(--text-muted);
+  line-height: 1.6;
+  margin-bottom: 14px;
+}
+
+.bangla-step-footer {
+  padding-top: 10px;
+  border-top: 1px dashed var(--border-color);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
 /* Big Action Hero Buttons (Section 7) */
 .hero-action-grid {
   display: grid;

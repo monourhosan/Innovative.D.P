@@ -78,6 +78,12 @@
         </div>
 
         <div class="topbar-right">
+          <button class="btn-how-to-use" onclick="openHowToUseGuide()" title="সিস্টেম ব্যবহার নির্দেশিকা">
+            <span class="red-beacon-dot"></span>
+            <svg class="icon icon-sm" viewBox="0 0 24 24" style="stroke: #FFFFFF;"><circle cx="12" cy="12" r="10"/><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
+            <span>How to Use (ব্যবহার নির্দেশিকা)</span>
+          </button>
+
           <div style="font-size: 12px; font-weight: 600; color: var(--primary-dark); background: var(--primary-light); padding: 5px 14px; border-radius: var(--radius-full); border: 1px solid var(--primary-border);">
             Made by Saif for Innovative Research & Consultancy Ltd.
           </div>
@@ -145,6 +151,164 @@
              VIEW 1: LIVE DASHBOARD
              ================================================================= -->
         <section id="view-dashboard" class="view-panel active">
+
+          <!-- Step-by-Step Bangla Guide Section (How to Use the System) -->
+          <div class="card bangla-guide-card" id="banglaGuideSection">
+            <div class="card-header" style="background: linear-gradient(135deg, #FAF9F6 0%, #F5F5F0 100%); border-bottom: 2px solid var(--accent-sand); display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 12px;">
+              <div style="display: flex; align-items: center; gap: 14px;">
+                <div style="width: 42px; height: 42px; border-radius: var(--radius-md); background: #FAF0F0; border: 1px solid rgba(197, 78, 78, 0.3); display: flex; align-items: center; justify-content: center; color: var(--accent-red); flex-shrink: 0;">
+                  <svg class="icon" viewBox="0 0 24 24"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/></svg>
+                </div>
+                <div>
+                  <div style="font-size: 16.5px; font-weight: 800; color: var(--text-main); letter-spacing: -0.2px;">
+                    সিস্টেম ব্যবহার নির্দেশিকা (How to Use the System)
+                  </div>
+                  <div style="font-size: 12.5px; color: var(--text-muted); margin-top: 2px;">
+                    মাঠ পর্যায় থেকে লাইভ ড্যাশবোর্ড ও এক্সেল এক্সপোর্ট পর্যন্ত ডেটা কালেকশন প্রক্রিয়ার সম্পূর্ণ ধাপসমূহ
+                  </div>
+                </div>
+              </div>
+
+              <div style="display: flex; align-items: center; gap: 10px;">
+                <span class="badge badge-success">সহজ ৬টি ধাপ</span>
+                <button class="btn btn-how-to-use btn-sm" onclick="openHowToUseModal()">
+                  <span class="red-beacon-dot"></span>
+                  <span>পূর্ণাঙ্গ গাইড ও ডেমো বিস্তারিত</span>
+                </button>
+              </div>
+            </div>
+
+            <div class="card-body" style="padding: 22px;">
+              <div class="bangla-step-grid">
+                <!-- Step 1 -->
+                <div class="bangla-step-item">
+                  <div>
+                    <div class="bangla-step-header">
+                      <span class="bangla-step-num">ধাপ ১</span>
+                      <span class="bangla-step-badge">প্রজেক্ট তৈরি</span>
+                    </div>
+                    <div class="bangla-step-title">
+                      <svg class="icon icon-sm" viewBox="0 0 24 24" style="color: var(--primary);"><path d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z"/></svg>
+                      <span>এক্সেল ফাইল আপলোড</span>
+                    </div>
+                    <p class="bangla-step-desc">
+                      KoboToolbox XLSForm (.xlsx) অথবা সাধারণ Excel ফাইল ড্র্যাগ-অ্যান্ড-ড্রপ করে আপলোড করুন। সিস্টেমটি স্বয়ংক্রিয়ভাবে প্রশ্ন ও অপশন যাচাই করে ডাইনামিক ফর্ম তৈরি করবে।
+                    </p>
+                  </div>
+                  <div class="bangla-step-footer">
+                    <span style="font-size: 11.5px; color: var(--text-muted);">সময়: ৩০ সেকেন্ড</span>
+                    <button class="btn btn-outline btn-sm" onclick="switchView('projects')">প্রজেক্টে যান &rarr;</button>
+                  </div>
+                </div>
+
+                <!-- Step 2 -->
+                <div class="bangla-step-item">
+                  <div>
+                    <div class="bangla-step-header">
+                      <span class="bangla-step-num">ধাপ ২</span>
+                      <span class="bangla-step-badge">টিম নেতৃত্ব</span>
+                    </div>
+                    <div class="bangla-step-title">
+                      <svg class="icon icon-sm" viewBox="0 0 24 24" style="color: var(--accent-amber);"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/></svg>
+                      <span>সুপারভাইজার অ্যাকাউন্ট তৈরি</span>
+                    </div>
+                    <p class="bangla-step-desc">
+                      Supervisors ট্যাবে গিয়ে সুপারভাইজারের নাম, ইউজার আইডি (যেমন: SUP-1042), পাসওয়ার্ড দিন এবং তিনি কোন কোন প্রজেক্ট তদারকি করবেন তা টিক চিহ্ন দিয়ে নির্ধারণ করুন।
+                    </p>
+                  </div>
+                  <div class="bangla-step-footer">
+                    <span style="font-size: 11.5px; color: var(--text-muted);">রোল: Supervisor</span>
+                    <button class="btn btn-outline btn-sm" onclick="switchView('supervisors')">সুপারভাইজারে যান &rarr;</button>
+                  </div>
+                </div>
+
+                <!-- Step 3 -->
+                <div class="bangla-step-item">
+                  <div>
+                    <div class="bangla-step-header">
+                      <span class="bangla-step-num">ধাপ ৩</span>
+                      <span class="bangla-step-badge">মাঠ কর্মী</span>
+                    </div>
+                    <div class="bangla-step-title">
+                      <svg class="icon icon-sm" viewBox="0 0 24 24" style="color: var(--accent-taupe-dark);"><rect x="5" y="2" width="14" height="20" rx="2" ry="2"/><line x1="12" y1="18" x2="12.01" y2="18"/></svg>
+                      <span>ফিল্ড টিম মেম্বার তৈরি</span>
+                    </div>
+                    <p class="bangla-step-desc">
+                      সুপারভাইজার তার প্যানেল থেকে মাঠ পর্যায়ের এনুমারেটরদের আইডি (যেমন: TM-2001) তৈরি করবেন। এই কর্মীরা সরাসরি মাঠে ইন্টারভিউ ও রেসপন্ডেন্টদের তথ্য এন্ট্রি করবেন।
+                    </p>
+                  </div>
+                  <div class="bangla-step-footer">
+                    <span style="font-size: 11.5px; color: var(--text-muted);">রোল: Team Member</span>
+                    <button class="btn btn-outline btn-sm" onclick="switchView('supervisors')">টিম ম্যানেজ করুন &rarr;</button>
+                  </div>
+                </div>
+
+                <!-- Step 4 -->
+                <div class="bangla-step-item">
+                  <div>
+                    <div class="bangla-step-header">
+                      <span class="bangla-step-num">ধাপ ৪</span>
+                      <span class="bangla-step-badge">ডেটা এন্ট্রি</span>
+                    </div>
+                    <div class="bangla-step-title">
+                      <svg class="icon icon-sm" viewBox="0 0 24 24" style="color: var(--primary);"><polyline points="20 6 9 17 4 12"/></svg>
+                      <span>মাঠ পর্যায় থেকে তথ্য সংগ্রহ</span>
+                    </div>
+                    <p class="bangla-step-desc">
+                      এনুমারেটররা তাদের মোবাইল অ্যাপে বা ব্রাউজারের Mobile Simulator-এ লগইন করে প্রশ্নোত্তরের উত্তর ও জিপিএস রেকর্ড করবেন। ইন্টারনেট না থাকলেও সম্পূর্ণ অফলাইনে কাজ করে।
+                    </p>
+                  </div>
+                  <div class="bangla-step-footer">
+                    <span style="font-size: 11.5px; color: var(--text-muted);">অফলাইন উপযোগী</span>
+                    <button class="btn btn-outline btn-sm" onclick="switchView('simulator')">সিমুলেটর টেস্ট করুন &rarr;</button>
+                  </div>
+                </div>
+
+                <!-- Step 5 -->
+                <div class="bangla-step-item">
+                  <div>
+                    <div class="bangla-step-header">
+                      <span class="bangla-step-num">ধাপ ৫</span>
+                      <span class="bangla-step-badge">রিয়েল-টাইম</span>
+                    </div>
+                    <div class="bangla-step-title">
+                      <svg class="icon icon-sm" viewBox="0 0 24 24" style="color: var(--primary);"><circle cx="12" cy="12" r="2"/><path d="M16.24 7.76a6 6 0 0 1 0 8.49m-8.48-.01a6 6 0 0 1 0-8.49"/></svg>
+                      <span>লাইভ ড্যাশবোর্ডে তদারকি</span>
+                    </div>
+                    <p class="bangla-step-desc">
+                      মাঠ থেকে সাবমিট হওয়া প্রতিটি রেকর্ড কোনো রিফ্রেশ ছাড়াই হোম পেজের লাইভ ফিডে তাৎক্ষণিক ভেসে উঠবে। প্রতিটি সুপারভাইজারের অগ্রগতি লাইভ প্রগ্রেস বারে দেখা যাবে।
+                    </p>
+                  </div>
+                  <div class="bangla-step-footer">
+                    <span style="font-size: 11.5px; color: var(--text-muted);">জিরো-রিফ্রেশ SSE</span>
+                    <button class="btn btn-outline btn-sm" onclick="DashboardView.refresh()">ফিড দেখুন &rarr;</button>
+                  </div>
+                </div>
+
+                <!-- Step 6 -->
+                <div class="bangla-step-item">
+                  <div>
+                    <div class="bangla-step-header">
+                      <span class="bangla-step-num">ধাপ ৬</span>
+                      <span class="bangla-step-badge">রিপোর্টিং</span>
+                    </div>
+                    <div class="bangla-step-title">
+                      <svg class="icon icon-sm" viewBox="0 0 24 24" style="color: var(--primary);"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+                      <span>এক ক্লিকে এক্সেল ডেটা এক্সপোর্ট</span>
+                    </div>
+                    <p class="bangla-step-desc">
+                      Submissions ট্যাবে গিয়ে 'Export to Excel (.xlsx)' বাটনে ক্লিক করলেই রেসপন্ডেন্টের উত্তর, টাইমস্ট্যাম্প, এনুমারেটর ও সুপারভাইজারের নাম সহ ক্লিন এক্সেল ফাইল ডাউনলোড হবে।
+                    </p>
+                  </div>
+                  <div class="bangla-step-footer">
+                    <span style="font-size: 11.5px; color: var(--text-muted);">ফরম্যাট: XLSX</span>
+                    <button class="btn btn-outline btn-sm" onclick="switchView('submissions')">এক্সপোর্ট পেজে যান &rarr;</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
           <!-- Top-Level Summary Cards -->
           <div class="stats-grid">
             <div class="stat-card">
@@ -905,6 +1069,127 @@
       </div>
       <div class="modal-footer">
         <button class="btn btn-primary" onclick="closeModal('submissionDetailModal')">Close</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Modal 7: Complete Step-by-Step Bangla Guide -->
+  <div class="modal-overlay" id="howToUseModal">
+    <div class="modal-card modal-lg">
+      <div class="modal-header" style="background: linear-gradient(135deg, #FAF9F6 0%, #F5F5F0 100%);">
+        <div>
+          <div class="modal-title" style="display: flex; align-items: center; gap: 8px;">
+            <span class="red-beacon-dot" style="background: var(--accent-red); box-shadow: 0 0 6px var(--accent-red);"></span>
+            <span>সিস্টেম ব্যবহারের সম্পূর্ণ নির্দেশিকা (Step-by-Step Guide)</span>
+          </div>
+          <div style="font-size: 12.5px; color: var(--text-muted); margin-top: 2px;">
+            Innovative Data Platform - মাঠ পর্যায় থেকে লাইভ ড্যাশবোর্ড পর্যন্ত সহজ গাইড
+          </div>
+        </div>
+        <button class="modal-close" onclick="closeModal('howToUseModal')">&times;</button>
+      </div>
+      <div class="modal-body" style="line-height: 1.7; font-size: 13.5px;">
+        <div style="background: var(--primary-light); border-left: 4px solid var(--primary); padding: 14px 18px; border-radius: var(--radius-sm); margin-bottom: 20px;">
+          <strong style="color: var(--primary-dark); font-size: 14px;">প্ল্যাটফর্ম পরিচিতি:</strong>
+          <div style="color: var(--text-main); margin-top: 4px; font-size: 13px;">
+            ইনোভেটিভ ডেটা প্ল্যাটফর্ম হলো মাঠ পর্যায়ের ফিল্ড সার্ভে এবং রিয়েল-টাইম সেন্ট্রাল তদারকির একটি আধুনিক ডিজিটাল প্ল্যাটফর্ম। এটি KoboToolbox XLSForm এবং সাধারণ Excel উভয় ফরম্যাট সমর্থন করে। সম্পূর্ণ অফলাইন-সক্ষম হওয়ায় দুর্গম এলাকায় ইন্টারনেট ছাড়াও ফিল্ড এনুমারেটররা নিরবচ্ছিন্নভাবে তথ্য সংগ্রহ করতে পারেন।
+          </div>
+        </div>
+
+        <div style="display: flex; flex-direction: column; gap: 18px;">
+          <!-- Step 1 Detail -->
+          <div style="border: 1px solid var(--border-color); border-radius: var(--radius-md); padding: 16px; background: #FFFFFF;">
+            <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 8px;">
+              <strong style="color: var(--text-main); font-size: 14.5px;">১. এক্সেল ফাইল আপলোড ও প্রজেক্ট তৈরি (Excel Upload & Project Creation)</strong>
+              <span class="badge badge-primary">ধাপ ১</span>
+            </div>
+            <p style="color: var(--text-muted); font-size: 13px; margin-bottom: 8px;">
+              - বাম পাশের মেনু থেকে <strong>Projects</strong> ট্যাবে যান অথবা হোম পেজের "Upload Excel" বাটনে ক্লিক করুন।<br>
+              - আপনার KoboToolbox XLSForm (সার্ভে ও চয়েস শীট সহ) বা সাধারণ এক্সেল ফাইলটি ড্র্যাগ করে ড্রপজোনে ছেড়ে দিন।<br>
+              - সিস্টেমটি সেকেন্ডের মধ্যে কলামগুলো বিশ্লেষণ করে ডাইনামিক ফর্ম তৈরি করবে। ড্যাশবোর্ডে স্যাম্পল টেমপ্লেট ডাউনলোডের সুবিধাও রয়েছে।
+            </p>
+            <button class="btn btn-outline btn-sm" onclick="closeModal('howToUseModal'); switchView('projects');">প্রজেক্ট পেজে যান &rarr;</button>
+          </div>
+
+          <!-- Step 2 Detail -->
+          <div style="border: 1px solid var(--border-color); border-radius: var(--radius-md); padding: 16px; background: #FFFFFF;">
+            <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 8px;">
+              <strong style="color: var(--text-main); font-size: 14.5px;">২. ফিল্ড সুপারভাইজার অ্যাকাউন্ট তৈরি (Supervisor Account Creation)</strong>
+              <span class="badge badge-warning">ধাপ ২</span>
+            </div>
+            <p style="color: var(--text-muted); font-size: 13px; margin-bottom: 8px;">
+              - মেনু থেকে <strong>Supervisors</strong> অপশনে গিয়ে <strong>+ Add Supervisor</strong> বাটনে ক্লিক করুন।<br>
+              - সুপারভাইজারের নাম, ইউজার আইডি (যেমন: <code>SUP-1042</code>), পাসওয়ার্ড দিন এবং তিনি কোন কোন সার্ভে প্রজেক্টের দায়িত্বে থাকবেন তা টিক দিন।<br>
+              - সুপারভাইজার তার নিজস্ব লগইন দিয়ে তার অধীনস্থ টিম মেম্বারদের কর্মক্ষমতা ও সংগৃহীত ডেটা তদারকি করতে পারবেন।
+            </p>
+            <button class="btn btn-outline btn-sm" onclick="closeModal('howToUseModal'); switchView('supervisors');">সুপারভাইজার পেজে যান &rarr;</button>
+          </div>
+
+          <!-- Step 3 Detail -->
+          <div style="border: 1px solid var(--border-color); border-radius: var(--radius-md); padding: 16px; background: #FFFFFF;">
+            <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 8px;">
+              <strong style="color: var(--text-main); font-size: 14.5px;">৩. ফিল্ড টিম মেম্বার বা এনুমারেটর তৈরি (Team Members / Enumerators Setup)</strong>
+              <span class="badge badge-neutral">ধাপ ৩</span>
+            </div>
+            <p style="color: var(--text-muted); font-size: 13px; margin-bottom: 8px;">
+              - সুপারভাইজার বা এডমিন ফিল্ড এনুমারেটরদের অ্যাকাউন্ট (যেমন: <code>TM-2001</code>) তৈরি করবেন।<br>
+              - মাঠ কর্মীরা এই আইডি ও পাসওয়ার্ড দিয়ে তাদের হ্যান্ডহেল্ড অ্যান্ড্রয়েড ডিভাইসে লগইন করবেন।
+            </p>
+            <button class="btn btn-outline btn-sm" onclick="closeModal('howToUseModal'); switchView('supervisors');">টিম ম্যানেজমেন্ট দেখুন &rarr;</button>
+          </div>
+
+          <!-- Step 4 Detail -->
+          <div style="border: 1px solid var(--border-color); border-radius: var(--radius-md); padding: 16px; background: #FFFFFF;">
+            <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 8px;">
+              <strong style="color: var(--text-main); font-size: 14.5px;">৪. মাঠ পর্যায় থেকে তথ্য সংগ্রহ (Field Data Collection & Mobile Simulator)</strong>
+              <span class="badge badge-success">ধাপ ৪</span>
+            </div>
+            <p style="color: var(--text-muted); font-size: 13px; margin-bottom: 8px;">
+              - ফিল্ড কর্মীরা মোবাইল অ্যাপে লগইন করে নির্ধারিত প্রজেক্ট সিলেক্ট করবেন।<br>
+              - এক্সেল স্কিমা অনুযায়ী প্রতিটি প্রশ্নের উত্তর (টেক্সট, নম্বর, পছন্দ, ড্রপডাউন, জিপিএস লোকেশন) পূরণ করে সাবমিট করবেন।<br>
+              - আপনি এখনই কোনো মোবাইল ডিভাইস ছাড়াই ওয়েবসাইটের <strong>Mobile Simulator</strong> ট্যাবে গিয়ে লাইভ সাবমিশন টেস্ট করতে পারেন।
+            </p>
+            <button class="btn btn-outline btn-sm" onclick="closeModal('howToUseModal'); switchView('simulator');">মোবাইল সিমুলেটরে টেস্ট করুন &rarr;</button>
+          </div>
+
+          <!-- Step 5 Detail -->
+          <div style="border: 1px solid var(--border-color); border-radius: var(--radius-md); padding: 16px; background: #FFFFFF;">
+            <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 8px;">
+              <strong style="color: var(--text-main); font-size: 14.5px;">৫. লাইভ ড্যাশবোর্ডে রিয়েল-টাইম তদারকি (Live Telemetry Monitoring)</strong>
+              <span class="badge badge-primary">ধাপ ৫</span>
+            </div>
+            <p style="color: var(--text-muted); font-size: 13px; margin-bottom: 8px;">
+              - ফিল্ড থেকে সাবমিট হওয়া প্রতিটি রেকর্ড এই হোম পেজের <strong>Live Submission Stream</strong>-এ সেকেন্ডের মধ্যে দৃশ্যমান হয়।<br>
+              - কোনো রিফ্রেশ বোতামে চাপ দিতে হবে না; সার্ভার-সেন্ট ইভেন্টস (SSE) প্রযুক্তির সাহায্যে ডেটা অটো-স্ট্রিম হয়।<br>
+              - প্রতিটি সুপারভাইজারের আজকের অগ্রগতি ও মোট রেকর্ডের সংখ্যা লাইভ প্রগ্রেস বারে দেখা যায়।
+            </p>
+            <button class="btn btn-outline btn-sm" onclick="closeModal('howToUseModal'); switchView('dashboard');">ড্যাশবোর্ডে যান &rarr;</button>
+          </div>
+
+          <!-- Step 6 Detail -->
+          <div style="border: 1px solid var(--border-color); border-radius: var(--radius-md); padding: 16px; background: #FFFFFF;">
+            <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 8px;">
+              <strong style="color: var(--text-main); font-size: 14.5px;">৬. এক ক্লিকে সম্পূর্ণ এক্সেল রিপোর্ট ডাউনলোড (One-Click Excel Data Export)</strong>
+              <span class="badge badge-success">ধাপ ৬</span>
+            </div>
+            <p style="color: var(--text-muted); font-size: 13px; margin-bottom: 8px;">
+              - <strong>Submissions</strong> পেজে যান এবং <strong>Export to Excel (.xlsx)</strong> বাটনে ক্লিক করুন।<br>
+              - সিস্টেম কয়েক সেকেন্ডের মধ্যে সমস্ত সংগৃহীত উত্তর, ফিল্ড এনুমারেটর, সুপারভাইজার, সময় এবং মেটাডেটা সহ পূর্ণাঙ্গ এক্সেল ফাইল তৈরি করে ডাউনলোড করে দেবে।
+            </p>
+            <button class="btn btn-outline btn-sm" onclick="closeModal('howToUseModal'); switchView('submissions');">এক্সপোর্ট পেজে যান &rarr;</button>
+          </div>
+        </div>
+
+        <div style="margin-top: 20px; padding: 14px; background: var(--bg-panel-subtle); border: 1px dashed var(--accent-taupe); border-radius: var(--radius-md); font-size: 12.5px; color: var(--text-main);">
+          <strong>টেস্টিং ও ডেমো লগইন তথ্য:</strong><br>
+          - এডমিন: <code>admin</code> / <code>admin123</code><br>
+          - সুপারভাইজার: <code>SUP-1042</code> / <code>supervisor123</code><br>
+          - ফিল্ড মেম্বার: <code>TM-2001</code> / <code>member123</code>
+        </div>
+      </div>
+      <div class="modal-footer" style="display: flex; justify-content: space-between; align-items: center;">
+        <span style="font-size: 12px; color: var(--text-muted); font-weight: 600;">Made by Saif for Innovative Research & Consultancy Ltd.</span>
+        <button class="btn btn-primary" onclick="closeModal('howToUseModal')">বুঝেছি, বন্ধ করুন</button>
       </div>
     </div>
   </div>
