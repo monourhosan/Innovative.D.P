@@ -61,14 +61,31 @@ This guide details the step-by-step instructions to deploy the **Innovative Data
 
 ---
 
-## 3. Deployment Steps
+## 3. Deployment Methods
 
-### Step 1: Clone / Navigate to Project Directory
+### Method A: Deploy via Wasmer Web Console (From GitHub)
+
+This is the fastest method if your repository is connected to GitHub (`https://github.com/monourhosan/Innovative.D.P`):
+
+1. **Open Wasmer Console:** Navigate to [https://wasmer.io/apps](https://wasmer.io/apps) and click **Create App** (or **Deploy from GitHub**).
+2. **Select Repository:** Select `monourhosan/Innovative.D.P` and choose the `main` branch.
+3. **Configure Deployment Settings:**
+   * **Project Preset:** Select **`Dockerfile`** *(or `node-base` with Node.js engine)*.
+   * **Node.js Engine:** Ensure it is set to **`Node.js`** *(⚠️ Do NOT select `QuickJS` as it lacks full Node.js module support)*.
+   * **Enable Database:** Keep **`OFF / Disabled`** *(Our app runs native SQLite backed by Wasmer's persistent storage volume with zero cloud database costs)*.
+   * **Port:** `8080` (or leave default `$PORT`).
+4. **Click Deploy:** Wasmer will build and launch your application at a public URL (e.g., `https://innovative-data-platform.wasmer.app`).
+
+---
+
+### Method B: Deploy via Wasmer CLI
+
+#### Step 1: Clone / Navigate to Project Directory
 ```bash
 cd /path/to/irc_data
 ```
 
-### Step 2: Configure Environment Variables (Optional)
+#### Step 2: Configure Environment Variables (Optional)
 If you wish to customize the default admin password or JWT secret on Wasmer, configure them as secrets:
 ```bash
 wasmer app secret create JWT_SECRET="your_custom_production_jwt_secret_key"
@@ -76,7 +93,7 @@ wasmer app secret create DEFAULT_ADMIN_USER="admin"
 wasmer app secret create DEFAULT_ADMIN_PASS="your_secure_password"
 ```
 
-### Step 3: Deploy to Wasmer.io
+#### Step 3: Deploy to Wasmer.io
 Deploy the container and bind the persistent volume with a single command:
 ```bash
 wasmer deploy
