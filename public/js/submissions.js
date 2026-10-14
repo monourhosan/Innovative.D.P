@@ -105,7 +105,8 @@ window.SubmissionsView = {
           </td>
           <td>
             <button class="btn btn-outline btn-sm" onclick="SubmissionsView.showDetailModal(${sub.id})">
-              🔍 View Answers
+              <svg class="icon icon-sm" viewBox="0 0 24 24"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+              <span>View Details</span>
             </button>
           </td>
         </tr>

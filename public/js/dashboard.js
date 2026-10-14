@@ -112,10 +112,12 @@ window.DashboardView = {
     if (submissions.length === 0) {
       feedContainer.innerHTML = `
         <div class="empty-state">
-          <div class="empty-state-icon">📡</div>
+          <div class="empty-state-icon">
+            <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="2"/><path d="M16.24 7.76a6 6 0 0 1 0 8.49m-8.48-.01a6 6 0 0 1 0-8.49m11.31-2.82a10 10 0 0 1 0 14.14m-14.14 0a10 10 0 0 1 0-14.14"/></svg>
+          </div>
           <div class="empty-state-title">Listening for Incoming Submissions...</div>
           <div class="empty-state-desc">Live submissions collected by Team Members will appear here in real-time.</div>
-          <div class="empty-guide-arrow">👉 You can test submitting form records in the Mobile Simulator tab!</div>
+          <div class="empty-guide-arrow">You can test submitting form records in the Mobile Simulator tab.</div>
         </div>
       `;
       return;
@@ -138,7 +140,9 @@ window.DashboardView = {
 
     return `
       <div class="live-feed-item" id="feed-sub-${sub.id}">
-        <div class="feed-icon">✓</div>
+        <div class="feed-icon">
+          <svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>
+        </div>
         <div class="feed-content">
           <div class="feed-title">
             <span>${escapeHtml(sub.project_title || 'Data Project')}</span>

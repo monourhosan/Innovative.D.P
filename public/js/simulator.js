@@ -105,7 +105,8 @@ window.SimulatorView = {
             <div style="display: flex; gap: 6px;">
               <input type="text" id="${inputId}" class="form-control" placeholder="Lat, Long (e.g. 23.8103, 90.4125)" ${f.required ? 'required' : ''}>
               <button type="button" class="btn btn-outline btn-sm" onclick="SimulatorView.captureGps('${inputId}')" title="Simulate GPS capture">
-                📍 GPS
+                <svg class="icon icon-sm" viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+                <span>GPS</span>
               </button>
             </div>
           `;
@@ -121,7 +122,7 @@ window.SimulatorView = {
               <span style="color: var(--primary); font-weight: 700;">${idx + 1}.</span> ${escapeHtml(f.label || f.name)}
               ${f.required ? '<span style="color: var(--accent-red);">*</span>' : ''}
             </label>
-            ${f.hint ? `<div style="font-size: 11px; color: var(--text-muted); margin-bottom: 4px;">💡 ${escapeHtml(f.hint)}</div>` : ''}
+            ${f.hint ? `<div style="font-size: 11px; color: var(--text-muted); margin-bottom: 4px;"><em>Hint: ${escapeHtml(f.hint)}</em></div>` : ''}
             ${inputHtml}
           </div>
         `;
@@ -132,10 +133,10 @@ window.SimulatorView = {
           ${formHtml}
           <div style="display: flex; gap: 8px; margin-top: 16px;">
             <button type="button" class="btn btn-outline btn-sm" onclick="SimulatorView.fillSampleData()" style="flex: 1;">
-              🪄 Auto-Fill Sample
+              Auto-Fill Sample
             </button>
             <button type="submit" id="simSubmitBtn" class="btn btn-primary" style="flex: 2;">
-              📤 Submit Record Now
+              Submit Record Now
             </button>
           </div>
         </form>
@@ -237,7 +238,7 @@ window.SimulatorView = {
       });
 
       if (res && res.success) {
-        showToast('🚀 Submission recorded! Check Live Dashboard to watch real-time stream.', 'success');
+        showToast('Submission recorded successfully! Check Live Dashboard to watch real-time stream.', 'success');
         
         // Reset form
         document.getElementById('simulatorDataForm').reset();
@@ -251,7 +252,7 @@ window.SimulatorView = {
       showToast(err.message || 'Submission failed', 'error');
     } finally {
       submitBtn.disabled = false;
-      submitBtn.textContent = '📤 Submit Record Now';
+      submitBtn.textContent = 'Submit Record Now';
     }
   }
 };

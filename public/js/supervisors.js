@@ -71,17 +71,18 @@ window.SupervisorsView = {
           </td>
           <td>
             <div style="display: flex; align-items: center; gap: 6px;">
-              <span style="font-family: var(--font-mono); font-size: 13px; background: #F1F5F9; padding: 2px 6px; border-radius: 4px;">
+              <span style="font-family: var(--font-mono); font-size: 13px; background: var(--bg-main); border: 1px solid var(--border-color); padding: 2px 6px; border-radius: 4px;">
                 ${escapeHtml(sup.plain_password || '••••••••')}
               </span>
               <button class="btn btn-outline btn-sm" title="Copy Credentials" onclick="SupervisorsView.copyCredentials('${escapeHtml(sup.full_name)}', '${escapeHtml(sup.user_id)}', '${escapeHtml(sup.plain_password || '')}')">
-                📋
+                <svg class="icon icon-sm" viewBox="0 0 24 24"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>
               </button>
             </div>
           </td>
           <td>
             <button class="btn btn-outline btn-sm" onclick="SupervisorsView.viewTeamMembers(${sup.id}, '${escapeHtml(sup.full_name)}')">
-              👥 ${sup.team_members_count || 0} Members
+              <svg class="icon icon-sm" viewBox="0 0 24 24"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/></svg>
+              <span>${sup.team_members_count || 0} Members</span>
             </button>
           </td>
           <td>
@@ -225,17 +226,17 @@ window.SupervisorsView = {
   copyCredentials(name, userId, password) {
     const portalUrl = window.location.origin;
     const message = 
-`🌟 Innovative Data Platform (Made by Saif)
-Supervisor Credentials
-━━━━━━━━━━━━━━━━━━━━━━
-👤 Name: ${name}
-🆔 User ID: ${userId}
-🔑 Password: ${password}
-🌐 Portal: ${portalUrl}
-━━━━━━━━━━━━━━━━━━━━━━
-Use these credentials to log in or configure the Companion Android App.`;
+`Innovative Data Platform
+Innovative Research & Consultancy Ltd.
+──────────────────────────────
+Name: ${name}
+User ID: ${userId}
+Password: ${password}
+Portal URL: ${portalUrl}
+──────────────────────────────
+Use these credentials to log in or configure the field mobile application.`;
 
-    copyToClipboard(message, '📋 Supervisor credentials copied for WhatsApp / SMS / Email!');
+    copyToClipboard(message, 'Supervisor credentials copied to clipboard!');
   },
 
   async toggleSupervisorStatus(supId) {
@@ -276,7 +277,8 @@ Use these credentials to log in or configure the Companion Android App.`;
             <td><strong>${tm.total_submissions || 0}</strong></td>
             <td>
               <button class="btn btn-outline btn-sm" onclick="SupervisorsView.copyCredentials('${escapeHtml(tm.full_name)}', '${escapeHtml(tm.user_id)}', '${escapeHtml(tm.plain_password || '')}')">
-                📋 Copy
+                <svg class="icon icon-sm" viewBox="0 0 24 24"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>
+                <span>Copy</span>
               </button>
             </td>
           </tr>

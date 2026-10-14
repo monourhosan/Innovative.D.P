@@ -30,10 +30,12 @@ window.ProjectsView = {
     if (projects.length === 0) {
       container.innerHTML = `
         <div class="empty-state">
-          <div class="empty-state-icon">📋</div>
+          <div class="empty-state-icon">
+            <svg viewBox="0 0 24 24"><path d="M9 5H7a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V7a2 2 0 0 0-2-2h-2"/><rect x="9" y="3" width="6" height="4" rx="2"/></svg>
+          </div>
           <div class="empty-state-title">No Data Projects Created Yet</div>
           <div class="empty-state-desc">Upload an Excel (.xlsx) file above to automatically generate your first survey project.</div>
-          <div class="empty-guide-arrow">⬆️ Drag & Drop an .xlsx file or download a sample template above to begin</div>
+          <div class="empty-guide-arrow">Drag & Drop an .xlsx file or download a sample template above to begin</div>
         </div>
       `;
       return;
@@ -71,7 +73,7 @@ window.ProjectsView = {
                   </span>
                 </td>
                 <td>
-                  <strong style="color: var(--accent-green); font-size: 15px;">${p.total_submissions || 0}</strong>
+                  <strong style="color: var(--primary); font-size: 15px;">${p.total_submissions || 0}</strong>
                 </td>
                 <td>
                   <span class="badge badge-neutral">${p.assigned_supervisors_count || 0} assigned</span>
@@ -82,7 +84,8 @@ window.ProjectsView = {
                 <td>
                   <div style="display: flex; gap: 6px; flex-wrap: wrap;">
                     <button class="btn btn-success btn-sm" onclick="SubmissionsView.downloadExcelForProject(${p.id}, '${escapeHtml(p.title)}')">
-                      📥 Download .xlsx
+                      <svg class="icon icon-sm" viewBox="0 0 24 24"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+                      <span>Download .xlsx</span>
                     </button>
                     <button class="btn btn-outline btn-sm" onclick="ProjectsView.viewProjectDetails(${p.id})">
                       Preview Form
@@ -206,7 +209,7 @@ window.ProjectsView = {
               ${f.required ? '<span class="badge badge-danger" style="font-size: 10px;">Required</span>' : ''}
             </div>
           </div>
-          ${f.hint ? `<div style="font-size: 12px; color: var(--text-muted); margin-bottom: 6px;">💡 ${escapeHtml(f.hint)}</div>` : ''}
+          ${f.hint ? `<div style="font-size: 12px; color: var(--text-muted); margin-bottom: 6px;"><em>Hint: ${escapeHtml(f.hint)}</em></div>` : ''}
           ${choicesPills ? `<div style="display: flex; flex-wrap: wrap; gap: 4px; margin-top: 6px;">${choicesPills}</div>` : ''}
         </div>
       `;
@@ -269,7 +272,7 @@ window.ProjectsView = {
       });
 
       if (res && res.success) {
-        showToast('🎉 Project published successfully!', 'success');
+        showToast('Project published successfully!', 'success');
         closeModal('publishProjectModal');
         this.refresh();
         DashboardView.refresh();
