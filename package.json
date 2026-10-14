@@ -5,8 +5,13 @@
   "main": "src/server.js",
   "scripts": {
     "start": "node src/server.js",
+    "build": "echo \"Build completed - No compilation needed for Node.js Express backend.\"",
+    "test": "node src/test_suite.js",
     "dev": "node --watch src/server.js",
     "seed": "node src/db/seed_samples.js"
+  },
+  "engines": {
+    "node": ">=22.5.0"
   },
   "keywords": [
     "kobotoolbox",

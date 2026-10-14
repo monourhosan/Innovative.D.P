@@ -126,9 +126,10 @@ async function runTests() {
     assert(supDash.status === 200, 'Supervisor dashboard accessible');
     assert(supDash.data.team_members.length >= 2, 'Supervisor sees assigned team members');
 
+    const testTmId = 'TM-' + Math.floor(1000 + Math.random() * 9000);
     const newTmRes = await makeRequest('/api/v1/supervisor/team-members', 'POST', {
       full_name: 'Tareq Rahman',
-      user_id: 'TM-9999',
+      user_id: testTmId,
       password: 'password123'
     }, supervisorToken);
     assert(newTmRes.status === 201 && newTmRes.data.team_member, 'Supervisor created new Team Member successfully');

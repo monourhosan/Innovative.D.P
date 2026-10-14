@@ -1,4 +1,17 @@
-const { DatabaseSync } = require('node:sqlite');
+let DatabaseSync;
+try {
+  ({ DatabaseSync } = require('node:sqlite'));
+} catch (err) {
+  console.error('\n========================================================================');
+  console.error(' [CRITICAL ERROR] Failed to load native SQLite module (node:sqlite)');
+  console.error(' Innovative Data Platform requires Node.js v22.5.0 or newer.');
+  console.error(' Current Node.js version:', process.version);
+  console.error(' If deploying on Wasmer.io, please change Node.js Engine to "Node.js"');
+  console.error(' or switch the Project Preset to "Dockerfile".');
+  console.error('========================================================================\n');
+  throw err;
+}
+
 const fs = require('fs');
 const path = require('path');
 const bcrypt = require('bcryptjs');

@@ -8,3 +8,5 @@ test_tmp
 uploads/*
 npm-debug.log
 .DS_Store
+InnovativeDataPlatform-Android/
+*.log
