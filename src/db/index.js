@@ -192,6 +192,22 @@ function initSchema() {
     `, config.defaultAdminUser, hash, config.defaultAdminPass, 'Platform Administrator');
     console.log(`[Database] Seeded default Admin user: ${config.defaultAdminUser} / ${config.defaultAdminPass}`);
   }
+
+  // Ensure all 7 demonstration projects are populated
+  setImmediate(() => {
+    try {
+      const projCount = dbHelper.queryOne('SELECT COUNT(*) as count FROM projects');
+      if (!projCount || projCount.count < 7) {
+        const seedShowcase = require('./seed_samples');
+        if (typeof seedShowcase === 'function') {
+          seedShowcase();
+        }
+      }
+    } catch (seedErr) {
+      console.warn('[Database] Auto-seeding notice:', seedErr.message);
+    }
+  });
+
   isInitialized = true;
 }
 
