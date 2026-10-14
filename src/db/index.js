@@ -14,23 +14,47 @@ try {
 
 const fs = require('fs');
 const path = require('path');
+const os = require('os');
 const bcrypt = require('bcryptjs');
 const config = require('../config');
 
-// Ensure database directory exists
-const dbDir = path.dirname(config.databasePath);
-if (!fs.existsSync(dbDir)) {
-  fs.mkdirSync(dbDir, { recursive: true });
+// Resilient multi-tier database opener
+function openDatabase() {
+  const candidates = [
+    config.databasePath,
+    path.resolve(process.cwd(), 'data', 'platform.db'),
+    path.resolve(process.cwd(), 'platform.db'),
+    path.join(os.tmpdir(), 'platform.db'),
+    ':memory:'
+  ];
+
+  for (const candidate of candidates) {
+    if (!candidate) continue;
+    try {
+      if (candidate !== ':memory:') {
+        const dir = path.dirname(candidate);
+        if (!fs.existsSync(dir)) {
+          fs.mkdirSync(dir, { recursive: true });
+        }
+      }
+      const instance = new DatabaseSync(candidate);
+      console.log(`[Database] SQLite active at: ${candidate}`);
+      return instance;
+    } catch (err) {
+      console.warn(`[Database] Candidate '${candidate}' could not be opened (${err.message}). Trying fallback...`);
+    }
+  }
+  throw new Error('All SQLite database candidates failed to initialize.');
 }
 
-const db = new DatabaseSync(config.databasePath);
+const db = openDatabase();
 
-// Enable WAL mode for concurrency and foreign key constraints
+// Enable foreign keys and WAL mode if supported by the filesystem
 try {
-  db.exec('PRAGMA journal_mode = WAL;');
   db.exec('PRAGMA foreign_keys = ON;');
+  db.exec('PRAGMA journal_mode = WAL;');
 } catch (err) {
-  console.warn('SQLite PRAGMA warning:', err.message);
+  console.warn('[Database] SQLite PRAGMA journal_mode WAL warning:', err.message);
 }
 
 // Initialize tables

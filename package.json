@@ -2,9 +2,9 @@
   "name": "innovative-data-platform",
   "version": "1.0.0",
   "description": "Innovative Data Platform - Admin Website and Backend API (Made by Saif)",
-  "main": "src/server.js",
+  "main": "index.js",
   "scripts": {
-    "start": "node src/server.js",
+    "start": "node index.js",
     "build": "echo \"Build completed - No compilation needed for Node.js Express backend.\"",
     "test": "node src/test_suite.js",
     "dev": "node --watch src/server.js",
@@ -31,6 +31,7 @@
     "express": "^4.21.2",
     "jsonwebtoken": "^9.0.2",
     "multer": "^1.4.5-lts.1",
+    "sql.js": "^1.14.2",
     "xlsx": "^0.18.5"
   }
 }

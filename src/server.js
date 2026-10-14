@@ -61,6 +61,14 @@ app.use((req, res, next) => {
   next();
 });
 
+// Process-level safety guards for container / serverless edge runtimes
+process.on('uncaughtException', (err) => {
+  console.error('[UNCAUGHT EXCEPTION]', err.stack || err.message);
+});
+process.on('unhandledRejection', (reason, promise) => {
+  console.error('[UNHANDLED REJECTION]', reason);
+});
+
 // Central Error Handler
 app.use((err, req, res, next) => {
   console.error('[Error]', err.stack || err.message);
@@ -78,6 +86,14 @@ const server = app.listen(config.port, '0.0.0.0', () => {
   console.log(` 🌐 Server active: http://localhost:${config.port}`);
   console.log(` 📊 Deployment Target: Wasmer.io`);
   console.log('====================================================');
+});
+
+server.on('error', (err) => {
+  if (err.code === 'EADDRINUSE') {
+    console.warn(`[Server Notice] Port ${config.port} is already bound by an active instance.`);
+  } else {
+    console.error('[Server Error]', err.stack || err.message);
+  }
 });
 
 module.exports = { app, server };

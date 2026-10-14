@@ -8,7 +8,7 @@ function resolveDbPath() {
 }
 
 module.exports = {
-  port: parseInt(process.env.PORT, 10) || 3000,
+  port: parseInt(process.env.PORT, 10) || 8080,
   jwtSecret: process.env.JWT_SECRET || 'innovative_data_platform_secret_key_by_saif_2026_secure',
   databasePath: resolveDbPath(),
   defaultAdminUser: process.env.DEFAULT_ADMIN_USER || 'admin',
