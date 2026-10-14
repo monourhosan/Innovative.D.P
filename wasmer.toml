@@ -1,7 +1,7 @@
 [package]
-name = "saif/innovative-data-platform"
+name = "monourhosan/innovative"
 version = "1.0.0"
-description = "Innovative Data Platform (Admin Website & Backend API) - Made by Saif"
+description = "Innovative Data Platform - Made by Saif"
 license = "MIT"
 readme = "README.md"
 
