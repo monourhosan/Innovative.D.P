@@ -1,12 +1,12 @@
 # ==============================================================================
 # Wasmer Edge Application Configuration
 # Author: Made by Saif
-# App URL: https://innovative-monourhosan.wasmer.app
+# App URL: https://idp-99140.wasmer.app
 # ==============================================================================
 
 kind: wasmer.io/App.v0
 owner: monourhosan
-name: innovative
+name: idp-99140
 package: .
 
 debug: true

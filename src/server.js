@@ -5,7 +5,7 @@ const path = require('path');
 const config = require('./config');
 
 // Ensure database and schema are initialized
-require('./db');
+const db = require('./db');
 
 const authRoutes = require('./routes/authRoutes');
 const projectRoutes = require('./routes/projectRoutes');
@@ -39,6 +39,16 @@ app.get('/health', (req, res) => {
     uptime_seconds: Math.floor(process.uptime()),
     timestamp: new Date().toISOString()
   });
+});
+
+// Ensure database is ready before handling incoming API requests
+app.use(async (req, res, next) => {
+  try {
+    await db.ensureReady();
+    next();
+  } catch (err) {
+    next(err);
+  }
 });
 
 // Mount API routes
@@ -84,7 +94,7 @@ const server = app.listen(config.port, '0.0.0.0', () => {
   console.log(` 🚀 ${config.appName}`);
   console.log(` 👨‍💻 ${config.appAuthor}`);
   console.log(` 🌐 Server active: http://localhost:${config.port}`);
-  console.log(` 📊 Deployment Target: Wasmer.io`);
+  console.log(` 📊 Deployment Target: Wasmer.io (idp-99140)`);
   console.log('====================================================');
 });
 
