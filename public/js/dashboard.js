@@ -200,11 +200,15 @@ window.DashboardView = {
     this.playAudioNotification();
     showToast(`New submission received for "${sub.project_title || 'Project'}" from ${sub.team_member_name || 'Team Member'}!`, 'success');
 
-    // Update Counter Badges
+    // Update Counter Badges with live pop animation
     const countEl = document.getElementById('statTotalSubmissions');
     if (countEl) {
       const cur = parseInt(countEl.textContent, 10) || 0;
       countEl.textContent = cur + 1;
+      countEl.classList.remove('stat-pop');
+      void countEl.offsetWidth; // re-trigger animation
+      countEl.classList.add('stat-pop');
+      setTimeout(() => countEl.classList.remove('stat-pop'), 650);
     }
 
     const todayEl = document.getElementById('statSubmissionsToday');
@@ -212,6 +216,10 @@ window.DashboardView = {
       const match = todayEl.textContent.match(/(\d+)/);
       const curToday = match ? parseInt(match[1], 10) : 0;
       todayEl.textContent = `${curToday + 1} today`;
+      todayEl.classList.remove('stat-pop');
+      void todayEl.offsetWidth; // re-trigger animation
+      todayEl.classList.add('stat-pop');
+      setTimeout(() => todayEl.classList.remove('stat-pop'), 650);
     }
 
     // Prepend to Live Feed
