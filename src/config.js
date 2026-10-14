@@ -14,6 +14,6 @@ module.exports = {
   defaultAdminUser: process.env.DEFAULT_ADMIN_USER || 'admin',
   defaultAdminPass: process.env.DEFAULT_ADMIN_PASS || 'admin123',
   appName: 'Innovative Data Platform',
-  appAuthor: 'Made by Saif',
+  appAuthor: 'Made by Saif for Innovative Research & Consultancy Ltd.',
   version: '1.0.0'
 };

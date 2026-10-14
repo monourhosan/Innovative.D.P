@@ -39,9 +39,9 @@ class BrandingBanner extends StatelessWidget {
               style: TextStyle(fontSize: 11, color: Colors.grey),
             ),
             Text(
-              'Made by Saif',
+              'Made by Saif for Innovative Research & Consultancy Ltd.',
               style: TextStyle(
-                fontSize: 11,
+                fontSize: 10,
                 fontWeight: FontWeight.w800,
                 color: isDark ? const Color(0xFF38BDF8) : const Color(0xFF0284C7),
               ),
@@ -73,9 +73,9 @@ class BrandingBanner extends StatelessWidget {
             style: TextStyle(fontSize: 12, color: Colors.grey),
           ),
           Text(
-            'Made by Saif',
+            'Made by Saif for Innovative Research & Consultancy Ltd.',
             style: TextStyle(
-              fontSize: 12,
+              fontSize: 11,
               fontWeight: FontWeight.w900,
               color: Color(0xFF0284C7),
             ),

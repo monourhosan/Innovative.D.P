@@ -1,7 +1,7 @@
 {
   "name": "innovative-data-platform",
   "version": "1.0.0",
-  "description": "Innovative Data Platform - Admin Website and Backend API (Made by Saif)",
+  "description": "Innovative Data Platform - Admin Website and Backend API (Made by Saif for Innovative Research & Consultancy Ltd.)",
   "main": "index.js",
   "scripts": {
     "start": "node index.js",

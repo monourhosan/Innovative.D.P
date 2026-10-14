@@ -80,7 +80,7 @@ async function runTests() {
     const health = await makeRequest('/health');
     assert(health.status === 200, 'Health endpoint returns 200');
     assert(health.data.platform === 'Innovative Data Platform', 'Platform title is Innovative Data Platform');
-    assert(health.data.author === 'Made by Saif', 'Author attribution is Made by Saif');
+    assert(health.data.author === 'Made by Saif for Innovative Research & Consultancy Ltd.', 'Author attribution is Made by Saif for Innovative Research & Consultancy Ltd.');
 
     // Test 2: Admin Login
     console.log('\n--- 2. Admin Authentication ---');

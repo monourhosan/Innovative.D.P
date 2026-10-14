@@ -102,7 +102,7 @@ function exportSubmissionsToXlsx(project, submissions = []) {
   // Add Summary / Metadata sheet
   const summaryData = [
     { Property: 'Platform', Value: 'Innovative Data Platform' },
-    { Property: 'Attribution', Value: 'Made by Saif' },
+    { Property: 'Attribution', Value: 'Made by Saif for Innovative Research & Consultancy Ltd.' },
     { Property: 'Project Title', Value: project.title || 'Untitled Project' },
     { Property: 'Total Records Exported', Value: submissions.length },
     { Property: 'Total Dynamic Questions', Value: fields.length },

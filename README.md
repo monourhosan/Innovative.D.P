@@ -1,6 +1,6 @@
 # Innovative Data Platform
 
-> **Creator & Author:** Made by Saif  
+> **Creator & Author:** Made by Saif for Innovative Research & Consultancy Ltd.  
 > **Deployment Target:** [Wasmer.io](https://wasmer.io/) (Edge Container + Persistent SQLite Volume)  
 > **Repository:** [https://github.com/monourhosan/Innovative.D.P](https://github.com/monourhosan/Innovative.D.P)  
 > **Architecture:** Node.js (Express.js) + SQLite + Server-Sent Events (SSE) + SheetJS (.xlsx) + Zero-Dependency SPA Web Portal + Flutter Unified Android Companion App (`com.saif.innovativedata`)
@@ -301,5 +301,5 @@ Base URL: `/api/v1`
 ## 👤 Author & Branding
 
 * **Platform Name:** Innovative Data Platform
-* **Creator Attribution:** Made by Saif
+* **Creator Attribution:** Made by Saif for Innovative Research & Consultancy Ltd.
 * **License:** [MIT](LICENSE)

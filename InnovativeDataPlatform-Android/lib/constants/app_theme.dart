@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 class AppTheme {
   // Brand Identification
   static const String appName = 'Innovative Data Platform';
-  static const String appAuthor = 'Made by Saif';
+  static const String appAuthor = 'Made by Saif for Innovative Research & Consultancy Ltd.';
   static const String appVersion = '1.0.0';
   static const String defaultServerUrl = 'http://10.0.2.2:3000'; // Standard Android Emulator host mapping
 
