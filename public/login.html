@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Login - Innovative Data Platform | Made by Saif</title>
+  <link rel="stylesheet" href="/css/styles.css">
+  <style>
+    body {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 100vh;
+      background: linear-gradient(135deg, #0F172A 0%, #1E293B 100%);
+      padding: 20px;
+    }
+
+    .login-container {
+      width: 100%;
+      max-width: 440px;
+      background: #FFFFFF;
+      border-radius: var(--radius-lg);
+      box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.3), 0 8px 10px -6px rgba(0, 0, 0, 0.2);
+      overflow: hidden;
+      border: 1px solid rgba(255, 255, 255, 0.1);
+    }
+
+    .login-header {
+      background: linear-gradient(135deg, #1E40AF 0%, #1D4ED8 100%);
+      padding: 32px 28px;
+      text-align: center;
+      color: #FFFFFF;
+    }
+
+    .login-badge {
+      display: inline-block;
+      background: #10B981;
+      color: #FFFFFF;
+      font-size: 11px;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: 0.8px;
+      padding: 4px 10px;
+      border-radius: var(--radius-full);
+      margin-bottom: 12px;
+    }
+
+    .login-title {
+      font-size: 22px;
+      font-weight: 800;
+      letter-spacing: -0.3px;
+    }
+
+    .login-author {
+      font-size: 14px;
+      font-weight: 700;
+      color: #93C5FD;
+      margin-top: 4px;
+    }
+
+    .login-body {
+      padding: 32px 28px;
+    }
+
+    .demo-credentials-box {
+      margin-top: 24px;
+      padding: 16px;
+      background-color: #F8FAFC;
+      border: 1px dashed #CBD5E1;
+      border-radius: var(--radius-md);
+      font-size: 12px;
+    }
+
+    .demo-title {
+      font-weight: 700;
+      color: #334155;
+      margin-bottom: 8px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .demo-grid {
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+    }
+
+    .demo-btn {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 6px 10px;
+      background: #FFFFFF;
+      border: 1px solid #E2E8F0;
+      border-radius: var(--radius-sm);
+      cursor: pointer;
+      font-size: 12px;
+      transition: all 0.15s ease;
+      color: #1E293B;
+    }
+
+    .demo-btn:hover {
+      background: #EFF6FF;
+      border-color: #93C5FD;
+    }
+
+    .alert-error {
+      display: none;
+      background-color: var(--accent-red-light);
+      color: #991B1B;
+      border: 1px solid #FECACA;
+      padding: 12px 14px;
+      border-radius: var(--radius-md);
+      font-size: 13px;
+      font-weight: 600;
+      margin-bottom: 20px;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="login-container">
+    <div class="login-header">
+      <div class="login-badge">KoboToolbox Compatible • Wasmer.io Ready</div>
+      <h1 class="login-title">Innovative Data Platform</h1>
+      <div class="login-author">Made by Saif</div>
+    </div>
+
+    <div class="login-body">
+      <div id="errorAlert" class="alert-error"></div>
+
+      <form id="loginForm">
+        <div class="form-group">
+          <label class="form-label" for="userId">User ID / Username</label>
+          <input 
+            type="text" 
+            id="userId" 
+            name="user_id" 
+            class="form-control" 
+            placeholder="e.g. admin or SUP-1042" 
+            required 
+            autofocus
+          >
+        </div>
+
+        <div class="form-group">
+          <label class="form-label" for="password">Password</label>
+          <input 
+            type="password" 
+            id="password" 
+            name="password" 
+            class="form-control" 
+            placeholder="Enter password" 
+            required
+          >
+        </div>
+
+        <button type="submit" id="submitBtn" class="btn btn-primary btn-lg" style="width: 100%; margin-top: 8px;">
+          <span>Sign In to Platform</span>
+          <span>→</span>
+        </button>
+      </form>
+
+      <!-- Instant 1-Click Credentials for Review & Evaluation -->
+      <div class="demo-credentials-box">
+        <div class="demo-title">
+          <span>⚡ One-Click Demo Credentials:</span>
+          <span style="color: var(--accent-green); font-weight: 800;">Ready to Test</span>
+        </div>
+        <div class="demo-grid">
+          <button type="button" class="demo-btn" onclick="fillCreds('admin', 'admin123')">
+            <span>🛡️ <strong>Admin:</strong> admin</span>
+            <span style="color: #64748B;">admin123 [Click to Fill]</span>
+          </button>
+          <button type="button" class="demo-btn" onclick="fillCreds('SUP-1042', 'supervisor123')">
+            <span>👥 <strong>Supervisor:</strong> SUP-1042</span>
+            <span style="color: #64748B;">supervisor123 [Click to Fill]</span>
+          </button>
+          <button type="button" class="demo-btn" onclick="fillCreds('TM-2001', 'member123')">
+            <span>📱 <strong>Team Member:</strong> TM-2001</span>
+            <span style="color: #64748B;">member123 [Click to Fill]</span>
+          </button>
+        </div>
+      </div>
+
+      <div style="text-align: center; margin-top: 24px; font-size: 12px; color: var(--text-muted);">
+        Innovative Data Platform • <strong>Made by Saif</strong> • Hosted on Wasmer.io
+      </div>
+    </div>
+  </div>
+
+  <script>
+    function fillCreds(u, p) {
+      document.getElementById('userId').value = u;
+      document.getElementById('password').value = p;
+      document.getElementById('userId').focus();
+    }
+
+    const form = document.getElementById('loginForm');
+    const errorAlert = document.getElementById('errorAlert');
+    const submitBtn = document.getElementById('submitBtn');
+
+    form.addEventListener('submit', async (e) => {
+      e.preventDefault();
+      errorAlert.style.display = 'none';
+
+      const user_id = document.getElementById('userId').value.trim();
+      const password = document.getElementById('password').value;
+
+      if (!user_id || !password) return;
+
+      submitBtn.disabled = true;
+      submitBtn.innerHTML = '<span>Verifying credentials...</span>';
+
+      try {
+        const response = await fetch('/api/v1/auth/login', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ user_id, password })
+        });
+
+        const data = await response.json();
+
+        if (response.ok && data.success) {
+          localStorage.setItem('auth_token', data.token);
+          localStorage.setItem('user_profile', JSON.stringify(data.user));
+          // Redirect to dashboard
+          window.location.href = '/';
+        } else {
+          errorAlert.textContent = data.error || 'Login failed. Please check your credentials.';
+          errorAlert.style.display = 'block';
+          submitBtn.disabled = false;
+          submitBtn.innerHTML = '<span>Sign In to Platform</span> <span>→</span>';
+        }
+      } catch (err) {
+        errorAlert.textContent = 'Network or server error. Please make sure backend is running.';
+        errorAlert.style.display = 'block';
+        submitBtn.disabled = false;
+        submitBtn.innerHTML = '<span>Sign In to Platform</span> <span>→</span>';
+      }
+    });
+  </script>
+</body>
+</html>

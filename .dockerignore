@@ -1,0 +1,10 @@
+node_modules
+data/*.db
+data/*.db-wal
+data/*.db-shm
+test_tmp
+.git
+.env
+uploads/*
+npm-debug.log
+.DS_Store

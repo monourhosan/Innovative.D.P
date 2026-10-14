@@ -1,0 +1,22 @@
+[package]
+name = "saif/innovative-data-platform"
+version = "1.0.0"
+description = "Innovative Data Platform (Admin Website & Backend API) - Made by Saif"
+license = "MIT"
+readme = "README.md"
+
+[dependencies]
+
+[[volumes]]
+name = "platform-data"
+
+[[services]]
+name = "web"
+container = true
+ports = [{ port = 8080, name = "http" }]
+volumes = [{ name = "platform-data", mount = "/app/data" }]
+
+[env]
+PORT = "8080"
+NODE_ENV = "production"
+DATABASE_PATH = "/app/data/platform.db"

@@ -1,0 +1,921 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Innovative Data Platform — Made by Saif</title>
+  <link rel="stylesheet" href="/css/styles.css">
+</head>
+<body>
+
+  <div class="app-container">
+    <!-- Sidebar -->
+    <aside class="sidebar">
+      <div class="sidebar-header">
+        <span class="brand-badge">Wasmer.io Ready • v1.0.0</span>
+        <div class="brand-title">
+          <span>🌐</span>
+          <span>Innovative Data</span>
+        </div>
+        <div class="brand-author">Made by Saif</div>
+      </div>
+
+      <nav class="sidebar-nav">
+        <div class="nav-section-title">Core Operations</div>
+        <a class="nav-link active" data-view="dashboard" onclick="switchView('dashboard')">
+          <span class="nav-icon">📊</span>
+          <span>Live Dashboard</span>
+          <span class="nav-badge" id="liveNavBadge">LIVE</span>
+        </a>
+        <a class="nav-link" data-view="projects" onclick="switchView('projects')">
+          <span class="nav-icon">📁</span>
+          <span>1. Excel Projects</span>
+        </a>
+        <a class="nav-link" data-view="supervisors" onclick="switchView('supervisors')">
+          <span class="nav-icon">👥</span>
+          <span>2. Supervisors</span>
+        </a>
+        <a class="nav-link" data-view="submissions" onclick="switchView('submissions')">
+          <span class="nav-icon">📥</span>
+          <span>4. Data & Export (.xlsx)</span>
+        </a>
+
+        <div class="nav-section-title" style="margin-top: 14px;">Android & Developers</div>
+        <a class="nav-link" data-view="simulator" onclick="switchView('simulator')">
+          <span class="nav-icon">📱</span>
+          <span>Mobile App Simulator</span>
+        </a>
+        <a class="nav-link" data-view="api-docs" onclick="switchView('api-docs')">
+          <span class="nav-icon">⚡</span>
+          <span>Android REST API</span>
+        </a>
+        <a class="nav-link" data-view="settings" onclick="switchView('settings')">
+          <span class="nav-icon">⚙️</span>
+          <span>Settings & Admin</span>
+        </a>
+      </nav>
+
+      <div class="sidebar-footer">
+        <div class="author-credit">Innovative Data Platform</div>
+        <div style="font-size: 11px; color: #38BDF8; font-weight: 700;">Made by Saif</div>
+        <div class="wasmer-target">
+          <span>☁️</span>
+          <span>Target: Wasmer.io Container</span>
+        </div>
+      </div>
+    </aside>
+
+    <!-- Main Wrapper -->
+    <div class="main-wrapper">
+      <!-- Topbar -->
+      <header class="topbar">
+        <div class="topbar-left">
+          <div class="page-heading" id="topbarTitle">Innovative Data Platform</div>
+          <div class="live-pulse-badge" id="livePulseBadge">
+            <span class="pulse-dot"></span>
+            <span>LIVE FEED ACTIVE</span>
+          </div>
+        </div>
+
+        <div class="topbar-right">
+          <div style="font-size: 13px; font-weight: 700; color: #1E40AF; background: #EFF6FF; padding: 4px 10px; border-radius: var(--radius-full); border: 1px solid #BFDBFE;">
+            Made by Saif
+          </div>
+
+          <div class="user-pill">
+            <span>👤</span>
+            <span id="topbarUserName">Administrator</span>
+            <span class="user-role-badge" id="topbarUserRole">ADMIN</span>
+          </div>
+
+          <button class="btn btn-outline btn-sm" onclick="logout()" title="Sign Out">
+            <span>🚪 Logout</span>
+          </button>
+        </div>
+      </header>
+
+      <!-- Content Area -->
+      <main class="content-area">
+
+        <!-- Four Big Clear Action Buttons (Section 7 Zero-Training Interface) -->
+        <div class="hero-action-grid">
+          <div class="hero-action-btn" onclick="switchView('projects')">
+            <div class="hero-action-icon">📁</div>
+            <div class="hero-action-text">
+              <div class="step-tag">Step 1</div>
+              <div class="step-title">Upload Excel (.xlsx)</div>
+            </div>
+          </div>
+
+          <div class="hero-action-btn" onclick="switchView('supervisors')">
+            <div class="hero-action-icon" style="background: var(--accent-amber-light); color: var(--accent-amber);">👥</div>
+            <div class="hero-action-text">
+              <div class="step-tag" style="color: var(--accent-amber);">Step 2</div>
+              <div class="step-title">Add Supervisor Account</div>
+            </div>
+          </div>
+
+          <div class="hero-action-btn" onclick="switchView('dashboard')">
+            <div class="hero-action-icon" style="background: var(--accent-green-light); color: var(--accent-green);">📊</div>
+            <div class="hero-action-text">
+              <div class="step-tag" style="color: var(--accent-green);">Step 3</div>
+              <div class="step-title">Watch Live Dashboard</div>
+            </div>
+          </div>
+
+          <div class="hero-action-btn" onclick="switchView('submissions')">
+            <div class="hero-action-icon" style="background: #F5F3FF; color: #7C3AED;">📥</div>
+            <div class="hero-action-text">
+              <div class="step-tag" style="color: #7C3AED;">Step 4</div>
+              <div class="step-title">Download Data (.xlsx)</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- =================================================================
+             VIEW 1: LIVE DASHBOARD
+             ================================================================= -->
+        <section id="view-dashboard" class="view-panel active">
+          <!-- Top-Level Summary Cards -->
+          <div class="stats-grid">
+            <div class="stat-card">
+              <div class="stat-content">
+                <span class="stat-label">Active Projects</span>
+                <span class="stat-value" id="statTotalProjects">0</span>
+                <span class="stat-subtext">KoboToolbox & Table forms</span>
+              </div>
+              <div class="stat-icon-box stat-icon-blue">📁</div>
+            </div>
+
+            <div class="stat-card">
+              <div class="stat-content">
+                <span class="stat-label">Supervisors</span>
+                <span class="stat-value" id="statTotalSupervisors">0</span>
+                <span class="stat-subtext">Field leadership accounts</span>
+              </div>
+              <div class="stat-icon-box stat-icon-amber">👥</div>
+            </div>
+
+            <div class="stat-card">
+              <div class="stat-content">
+                <span class="stat-label">Team Members</span>
+                <span class="stat-value" id="statTotalTeamMembers">0</span>
+                <span class="stat-subtext">Field enumerators</span>
+              </div>
+              <div class="stat-icon-box stat-icon-purple">📱</div>
+            </div>
+
+            <div class="stat-card">
+              <div class="stat-content">
+                <span class="stat-label">Total Submissions</span>
+                <span class="stat-value" id="statTotalSubmissions">0</span>
+                <span class="stat-subtext" id="statSubmissionsToday">+0 today</span>
+              </div>
+              <div class="stat-icon-box stat-icon-green">⚡</div>
+            </div>
+          </div>
+
+          <!-- Live Supervisor Breakdown Table -->
+          <div class="card">
+            <div class="card-header">
+              <div class="card-title">
+                <span>👥</span>
+                <span>Live Supervisor Performance Breakdown</span>
+              </div>
+              <button class="btn btn-outline btn-sm" onclick="SupervisorsView.openCreateModal()">
+                + Add Supervisor
+              </button>
+            </div>
+            <div class="table-responsive">
+              <table class="data-table">
+                <thead>
+                  <tr>
+                    <th>Supervisor</th>
+                    <th>Team Members</th>
+                    <th>Data Collection Progress</th>
+                    <th>Assigned Projects</th>
+                    <th>Last Active</th>
+                    <th>Status</th>
+                    <th>Actions</th>
+                  </tr>
+                </thead>
+                <tbody id="supervisorBreakdownBody">
+                  <tr>
+                    <td colspan="7" style="text-align: center; padding: 24px; color: var(--text-muted);">
+                      Loading supervisor statistics...
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+
+          <!-- Real-Time Live Feed -->
+          <div class="card">
+            <div class="card-header">
+              <div class="card-title">
+                <span>📡</span>
+                <span>Real-Time Live Submission Stream</span>
+                <span class="badge badge-success" style="font-size: 11px;">Auto-Updates Without Refresh</span>
+              </div>
+              <div style="display: flex; gap: 8px;">
+                <button class="btn btn-outline btn-sm" onclick="switchView('simulator')">
+                  + Simulate Android Submission
+                </button>
+                <button class="btn btn-outline btn-sm" onclick="DashboardView.refresh()">
+                  🔄 Refresh Feed
+                </button>
+              </div>
+            </div>
+            <div class="card-body">
+              <div id="liveFeedContainer" class="live-feed-list">
+                <!-- Injected via dashboard.js -->
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- =================================================================
+             VIEW 2: PROJECTS & EXCEL FORM BUILDER
+             ================================================================= -->
+        <section id="view-projects" class="view-panel">
+          <!-- Excel Upload Section -->
+          <div class="card">
+            <div class="card-header">
+              <div class="card-title">
+                <span>📁</span>
+                <span>1. Upload Excel (.xlsx) to Start Project</span>
+              </div>
+              <div style="display: flex; gap: 8px;">
+                <button class="btn btn-outline btn-sm" onclick="ProjectsView.downloadXlsFormSample()">
+                  📥 Download Kobo XLSForm Template (.xlsx)
+                </button>
+                <button class="btn btn-outline btn-sm" onclick="ProjectsView.downloadSimpleTableSample()">
+                  📥 Download Simple Table Template (.xlsx)
+                </button>
+              </div>
+            </div>
+            <div class="card-body">
+              <div class="dropzone" id="projectDropzone">
+                <div class="dropzone-icon">📊</div>
+                <div class="dropzone-title">Click to Browse or Drag & Drop your Excel Form (.xlsx) Here</div>
+                <div class="dropzone-sub">
+                  Supports <strong>KoboToolbox XLSForm Mode</strong> (survey & choices sheets) OR <strong>Simple Table Mode</strong> (Row 1 column headers).
+                </div>
+                <input type="file" id="projectFileInput" accept=".xlsx,.xls" style="display: none;">
+              </div>
+            </div>
+          </div>
+
+          <!-- Active Projects List -->
+          <div class="card">
+            <div class="card-header">
+              <div class="card-title">
+                <span>📋</span>
+                <span>Published Data Collection Projects</span>
+              </div>
+            </div>
+            <div id="projectsListContainer">
+              <!-- Injected via projects.js -->
+            </div>
+          </div>
+        </section>
+
+        <!-- =================================================================
+             VIEW 3: SUPERVISORS MANAGEMENT
+             ================================================================= -->
+        <section id="view-supervisors" class="view-panel">
+          <div class="card">
+            <div class="card-header">
+              <div class="card-title">
+                <span>👥</span>
+                <span>Supervisor Accounts & Team Management</span>
+              </div>
+              <button class="btn btn-primary" onclick="SupervisorsView.openCreateModal()">
+                + 2. Add Supervisor & Get Login ID
+              </button>
+            </div>
+            <div class="table-responsive">
+              <table class="data-table">
+                <thead>
+                  <tr>
+                    <th>Supervisor Name</th>
+                    <th>User ID</th>
+                    <th>Password (Visible)</th>
+                    <th>Team Members</th>
+                    <th>Assigned Projects</th>
+                    <th>Status</th>
+                    <th>Actions</th>
+                  </tr>
+                </thead>
+                <tbody id="supervisorsTableBody">
+                  <!-- Injected via supervisors.js -->
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </section>
+
+        <!-- =================================================================
+             VIEW 4: SUBMISSIONS DATA VIEWER & EXPORT
+             ================================================================= -->
+        <section id="view-submissions" class="view-panel">
+          <div class="card">
+            <div class="card-header">
+              <div class="card-title">
+                <span>📥</span>
+                <span>Data Records & One-Click Excel Export</span>
+                <span class="badge badge-primary" id="submissionsCountBadge">Loading...</span>
+              </div>
+              <button class="btn btn-success" onclick="SubmissionsView.downloadExcelExport()">
+                📥 4. Download Collected Data (.xlsx)
+              </button>
+            </div>
+            <div class="card-body" style="padding-bottom: 0;">
+              <!-- Filters Bar -->
+              <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)) 100px; gap: 12px; margin-bottom: 20px;">
+                <div>
+                  <label class="form-label" style="font-size: 11px;">Filter Project</label>
+                  <select id="filterProject" class="form-control" onchange="SubmissionsView.refresh()">
+                    <option value="">All Projects</option>
+                  </select>
+                </div>
+                <div>
+                  <label class="form-label" style="font-size: 11px;">Filter Supervisor</label>
+                  <select id="filterSupervisor" class="form-control" onchange="SubmissionsView.refresh()">
+                    <option value="">All Supervisors</option>
+                  </select>
+                </div>
+                <div>
+                  <label class="form-label" style="font-size: 11px;">From Date</label>
+                  <input type="date" id="filterDateFrom" class="form-control" onchange="SubmissionsView.refresh()">
+                </div>
+                <div>
+                  <label class="form-label" style="font-size: 11px;">To Date</label>
+                  <input type="date" id="filterDateTo" class="form-control" onchange="SubmissionsView.refresh()">
+                </div>
+                <div>
+                  <label class="form-label" style="font-size: 11px;">Search</label>
+                  <input type="text" id="filterSearch" class="form-control" placeholder="Search name/answer..." oninput="SubmissionsView.refresh()">
+                </div>
+                <div style="display: flex; align-items: flex-end;">
+                  <button class="btn btn-outline btn-sm" style="width: 100%; height: 42px;" onclick="SubmissionsView.resetFilters()">
+                    Reset
+                  </button>
+                </div>
+              </div>
+            </div>
+
+            <div class="table-responsive">
+              <table class="data-table">
+                <thead>
+                  <tr>
+                    <th>Record ID</th>
+                    <th>Project & Timestamp</th>
+                    <th>Team Member (Enumerator)</th>
+                    <th>Supervisor</th>
+                    <th>Answers Preview</th>
+                    <th>Action</th>
+                  </tr>
+                </thead>
+                <tbody id="submissionsTableBody">
+                  <!-- Injected via submissions.js -->
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </section>
+
+        <!-- =================================================================
+             VIEW 5: ANDROID COMPANION APP SIMULATOR
+             ================================================================= -->
+        <section id="view-simulator" class="view-panel">
+          <div class="card" style="margin-bottom: 20px;">
+            <div class="card-header">
+              <div class="card-title">
+                <span>📱</span>
+                <span>Android Companion Mobile App Simulator (Zero Hardware Required)</span>
+              </div>
+              <div class="badge badge-success">Instant Field Testing</div>
+            </div>
+            <div class="card-body">
+              <p style="font-size: 14px; color: var(--text-muted); margin-bottom: 16px;">
+                This simulator runs the exact REST API client logic used by the Android Companion App. Select any project below, fill out questions generated from your Excel schema, and click <strong>Submit</strong>. Your record will immediately broadcast in real-time to the Admin Live Dashboard!
+              </p>
+
+              <div class="phone-mockup-wrapper">
+                <!-- Phone Mockup Frame -->
+                <div class="phone-mockup">
+                  <div class="phone-notch">
+                    <div class="phone-camera"></div>
+                  </div>
+                  <div class="phone-screen">
+                    <div class="phone-app-header">
+                      <div class="phone-app-title">📱 Innovative Collector</div>
+                      <span style="font-size: 11px; font-weight: 700; background: #10B981; padding: 2px 6px; border-radius: 999px;">Online</span>
+                    </div>
+
+                    <div class="phone-app-body">
+                      <div style="background: #FFFFFF; padding: 10px 14px; border-radius: var(--radius-sm); border: 1px solid var(--border-color); margin-bottom: 12px; font-size: 12px;">
+                        <div>Logged in as: <strong>Rahim Ahmed (TM-2001)</strong></div>
+                        <div style="color: var(--text-muted);">Supervisor: <strong>Saif (SUP-1042)</strong></div>
+                      </div>
+
+                      <div class="form-group" style="margin-bottom: 12px;">
+                        <label class="form-label" style="font-size: 12px;">Select Survey Project:</label>
+                        <select id="simulatorProjectSelect" class="form-control" style="font-size: 13px;">
+                          <!-- Populated via simulator.js -->
+                        </select>
+                      </div>
+
+                      <div id="simulatorFormContainer">
+                        <!-- Dynamic fields injected here -->
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                <!-- Guidance & Explanation Box -->
+                <div style="flex: 1; min-width: 300px;">
+                  <div class="card" style="box-shadow: none;">
+                    <div class="card-header">
+                      <div class="card-title" style="font-size: 15px;">💡 How this Companion App Works</div>
+                    </div>
+                    <div class="card-body" style="font-size: 13px; color: #334155; line-height: 1.6;">
+                      <ol style="padding-left: 20px; display: flex; flex-direction: column; gap: 8px;">
+                        <li><strong>Step 1:</strong> The Android app authenticates with <code>/api/v1/auth/login</code> using the Team Member's User ID and Password.</li>
+                        <li><strong>Step 2:</strong> The app fetches the projects assigned to their Supervisor via <code>/api/v1/member/projects</code>.</li>
+                        <li><strong>Step 3:</strong> The dynamic form fields (text, number, choices, GPS, dates) are rendered based on the project's <code>form_schema_json</code>.</li>
+                        <li><strong>Step 4:</strong> Submissions are sent to <code>/api/v1/member/submissions</code> (with offline batch queue support).</li>
+                        <li><strong>Step 5:</strong> The central backend saves the record, attaches metadata (Supervisor ID, Team Member ID, timestamp), and triggers an SSE broadcast to the Admin Live Dashboard!</li>
+                      </ol>
+
+                      <div style="margin-top: 20px; padding: 14px; background: var(--primary-light); border: 1px solid var(--primary-border); border-radius: var(--radius-md);">
+                        <strong style="color: var(--primary);">Made by Saif</strong>
+                        <div style="font-size: 12px; margin-top: 4px; color: #1E3A8A;">
+                          Built inside Google Antigravity IDE and pre-configured for instant zero-downtime deployment on Wasmer.io.
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- =================================================================
+             VIEW 6: REST API DOCUMENTATION FOR ANDROID APPS
+             ================================================================= -->
+        <section id="view-api-docs" class="view-panel">
+          <div class="card">
+            <div class="card-header">
+              <div class="card-title">
+                <span>⚡</span>
+                <span>REST API Contract for Companion Android Apps</span>
+              </div>
+              <div class="badge badge-primary">Base URL: /api/v1</div>
+            </div>
+            <div class="card-body">
+              <p style="font-size: 13px; color: var(--text-muted); margin-bottom: 20px;">
+                Complete endpoint reference for the companion Android applications. All requests accept and return JSON. CORS is fully enabled.
+              </p>
+
+              <!-- Endpoint 1: Auth Login -->
+              <div style="background: #F8FAFC; border: 1px solid var(--border-color); border-radius: var(--radius-md); padding: 18px; margin-bottom: 16px;">
+                <div style="display: flex; align-items: center; justify-content: space-between;">
+                  <div>
+                    <span class="badge badge-success" style="font-family: var(--font-mono);">POST</span>
+                    <strong style="font-family: var(--font-mono); margin-left: 8px;">/api/v1/auth/login</strong>
+                  </div>
+                  <span class="badge badge-neutral">Role: All (Admin, Supervisor, Member)</span>
+                </div>
+                <div style="font-size: 12px; color: var(--text-muted); margin-top: 6px;">
+                  Authenticates <code>user_id</code> & <code>password</code>. Returns JWT token, user profile, and supervisor relationship.
+                </div>
+                <pre style="background: #0F172A; color: #38BDF8; padding: 12px; border-radius: var(--radius-sm); font-size: 12px; margin-top: 8px; overflow-x: auto;">// Request Body
+{
+  "user_id": "SUP-1042",
+  "password": "supervisor123"
+}</pre>
+              </div>
+
+              <!-- Endpoint 2: Supervisor Dashboard -->
+              <div style="background: #F8FAFC; border: 1px solid var(--border-color); border-radius: var(--radius-md); padding: 18px; margin-bottom: 16px;">
+                <div style="display: flex; align-items: center; justify-content: space-between;">
+                  <div>
+                    <span class="badge badge-primary" style="font-family: var(--font-mono);">GET</span>
+                    <strong style="font-family: var(--font-mono); margin-left: 8px;">/api/v1/supervisor/dashboard</strong>
+                  </div>
+                  <span class="badge badge-neutral">Role: SUPERVISOR</span>
+                </div>
+                <div style="font-size: 12px; color: var(--text-muted); margin-top: 6px;">
+                  Returns live supervisor stats: team members count, total submissions, today submissions, and per-member breakdown.
+                </div>
+                <div style="margin-top: 10px;">
+                  <button class="btn btn-outline btn-sm" onclick="ApiDocsView.runEndpointTest('/api/v1/supervisor/dashboard', 'GET', null, 'outputSupDash')">
+                    ▶ Run Test Call
+                  </button>
+                  <pre id="outputSupDash" style="background: #0F172A; color: #A7F3D0; padding: 10px; border-radius: var(--radius-sm); font-size: 11px; margin-top: 8px; max-height: 160px; overflow-y: auto;">Click "Run Test Call" to execute live against backend</pre>
+                </div>
+              </div>
+
+              <!-- Endpoint 3: Member Projects -->
+              <div style="background: #F8FAFC; border: 1px solid var(--border-color); border-radius: var(--radius-md); padding: 18px; margin-bottom: 16px;">
+                <div style="display: flex; align-items: center; justify-content: space-between;">
+                  <div>
+                    <span class="badge badge-primary" style="font-family: var(--font-mono);">GET</span>
+                    <strong style="font-family: var(--font-mono); margin-left: 8px;">/api/v1/member/projects</strong>
+                  </div>
+                  <span class="badge badge-neutral">Role: TEAM_MEMBER</span>
+                </div>
+                <div style="font-size: 12px; color: var(--text-muted); margin-top: 6px;">
+                  Returns active projects with full <code>form_schema</code> JSON for dynamic rendering on the Android app.
+                </div>
+                <div style="margin-top: 10px;">
+                  <button class="btn btn-outline btn-sm" onclick="ApiDocsView.runEndpointTest('/api/v1/member/projects', 'GET', null, 'outputMemberProj')">
+                    ▶ Run Test Call
+                  </button>
+                  <pre id="outputMemberProj" style="background: #0F172A; color: #A7F3D0; padding: 10px; border-radius: var(--radius-sm); font-size: 11px; margin-top: 8px; max-height: 160px; overflow-y: auto;">Click "Run Test Call" to execute live against backend</pre>
+                </div>
+              </div>
+
+              <!-- Endpoint 4: Member Submissions -->
+              <div style="background: #F8FAFC; border: 1px solid var(--border-color); border-radius: var(--radius-md); padding: 18px; margin-bottom: 16px;">
+                <div style="display: flex; align-items: center; justify-content: space-between;">
+                  <div>
+                    <span class="badge badge-success" style="font-family: var(--font-mono);">POST</span>
+                    <strong style="font-family: var(--font-mono); margin-left: 8px;">/api/v1/member/submissions</strong>
+                  </div>
+                  <span class="badge badge-neutral">Role: TEAM_MEMBER</span>
+                </div>
+                <div style="font-size: 12px; color: var(--text-muted); margin-top: 6px;">
+                  Submits single collected form data or batch array of submissions for offline sync.
+                </div>
+                <pre style="background: #0F172A; color: #38BDF8; padding: 12px; border-radius: var(--radius-sm); font-size: 12px; margin-top: 8px; overflow-x: auto;">// Request Body (Single or Batch Array)
+{
+  "project_id": 1,
+  "answers_json": {
+    "respondent_name": "Jannatul Ferdous",
+    "respondent_age": 32,
+    "gender": "female",
+    "primary_water_source": "tube_well"
+  },
+  "client_timestamp": "2026-10-14T20:30:00Z"
+}</pre>
+              </div>
+
+              <!-- Endpoint 5: Member Dashboard -->
+              <div style="background: #F8FAFC; border: 1px solid var(--border-color); border-radius: var(--radius-md); padding: 18px;">
+                <div style="display: flex; align-items: center; justify-content: space-between;">
+                  <div>
+                    <span class="badge badge-primary" style="font-family: var(--font-mono);">GET</span>
+                    <strong style="font-family: var(--font-mono); margin-left: 8px;">/api/v1/member/dashboard</strong>
+                  </div>
+                  <span class="badge badge-neutral">Role: TEAM_MEMBER</span>
+                </div>
+                <div style="font-size: 12px; color: var(--text-muted); margin-top: 6px;">
+                  Returns the Team Member's personal stats (today's count, total count, recent submissions list).
+                </div>
+                <div style="margin-top: 10px;">
+                  <button class="btn btn-outline btn-sm" onclick="ApiDocsView.runEndpointTest('/api/v1/member/dashboard', 'GET', null, 'outputMemberDash')">
+                    ▶ Run Test Call
+                  </button>
+                  <pre id="outputMemberDash" style="background: #0F172A; color: #A7F3D0; padding: 10px; border-radius: var(--radius-sm); font-size: 11px; margin-top: 8px; max-height: 160px; overflow-y: auto;">Click "Run Test Call" to execute live against backend</pre>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- =================================================================
+             VIEW 7: SETTINGS
+             ================================================================= -->
+        <section id="view-settings" class="view-panel">
+          <div class="card">
+            <div class="card-header">
+              <div class="card-title">
+                <span>⚙️</span>
+                <span>Administrator Account Settings</span>
+              </div>
+            </div>
+            <div class="card-body">
+              <form id="changePasswordForm" onsubmit="handleAdminPasswordChange(event)" style="max-width: 480px;">
+                <div class="form-group">
+                  <label class="form-label">Full Name</label>
+                  <input type="text" id="adminFullName" class="form-control" value="Platform Administrator">
+                </div>
+
+                <div class="form-group">
+                  <label class="form-label">Admin User ID / Username</label>
+                  <input type="text" id="adminUserId" class="form-control" value="admin">
+                </div>
+
+                <div class="form-group">
+                  <label class="form-label">Current Password (optional if updating credentials)</label>
+                  <input type="password" id="adminCurrentPassword" class="form-control" placeholder="Enter current password">
+                </div>
+
+                <div class="form-group">
+                  <label class="form-label">New Password</label>
+                  <input type="password" id="adminNewPassword" class="form-control" placeholder="Enter new password (min 4 characters)" required>
+                </div>
+
+                <button type="submit" class="btn btn-primary">
+                  Save Account Changes
+                </button>
+              </form>
+            </div>
+          </div>
+
+          <!-- Platform System Info -->
+          <div class="card">
+            <div class="card-header">
+              <div class="card-title">
+                <span>☁️</span>
+                <span>Platform Deployment & System Status</span>
+              </div>
+            </div>
+            <div class="card-body">
+              <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 16px; font-size: 13px;">
+                <div>
+                  <div style="color: var(--text-muted);">Application Title</div>
+                  <div style="font-weight: 700;">Innovative Data Platform</div>
+                </div>
+                <div>
+                  <div style="color: var(--text-muted);">Creator Attribution</div>
+                  <div style="font-weight: 700; color: var(--primary);">Made by Saif</div>
+                </div>
+                <div>
+                  <div style="color: var(--text-muted);">Deployment Target</div>
+                  <div style="font-weight: 700; color: var(--accent-green);">Wasmer.io (Edge / Container)</div>
+                </div>
+                <div>
+                  <div style="color: var(--text-muted);">Database Engine</div>
+                  <div style="font-weight: 700;">SQLite 3 (WAL mode, persistent volume)</div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+      </main>
+    </div>
+  </div>
+
+  <!-- =================================================================
+       MODALS
+       ================================================================= -->
+
+  <!-- Modal 1: Publish Project & Visual Form Preview -->
+  <div class="modal-overlay" id="publishProjectModal">
+    <div class="modal-card modal-lg">
+      <div class="modal-header">
+        <div>
+          <div class="modal-title">Visual Form Preview & Publish</div>
+          <div style="font-size: 12px; color: var(--text-muted); margin-top: 2px;">
+            File: <strong id="newProjectFilename">form.xlsx</strong> • <span id="detectedModeBadge" class="badge badge-success">Mode</span>
+          </div>
+        </div>
+        <button class="modal-close" onclick="closeModal('publishProjectModal')">&times;</button>
+      </div>
+
+      <div class="modal-body">
+        <div class="form-group">
+          <label class="form-label">Project Title</label>
+          <input type="text" id="newProjectTitle" class="form-control" placeholder="e.g. Household Water Assessment 2026">
+        </div>
+
+        <div class="form-group">
+          <label class="form-label">Project Description</label>
+          <textarea id="newProjectDesc" class="form-control" placeholder="Brief explanation of survey scope and objectives"></textarea>
+        </div>
+
+        <div class="form-group">
+          <label class="form-label">Assign Supervisors to this Project:</label>
+          <div id="projectSupervisorCheckboxes" style="display: flex; flex-direction: column; gap: 6px; max-height: 120px; overflow-y: auto; padding: 10px; background: #F8FAFC; border: 1px solid var(--border-color); border-radius: var(--radius-sm);">
+            <!-- Populated via projects.js -->
+          </div>
+        </div>
+
+        <div style="font-size: 13px; font-weight: 700; margin: 18px 0 10px 0;">
+          📋 Generated Form Questions Preview:
+        </div>
+        <div id="previewQuestionsList" style="max-height: 320px; overflow-y: auto;">
+          <!-- Injected via projects.js -->
+        </div>
+      </div>
+
+      <div class="modal-footer">
+        <button class="btn btn-outline" onclick="closeModal('publishProjectModal')">Cancel</button>
+        <button class="btn btn-primary" id="publishConfirmBtn" onclick="ProjectsView.confirmPublishProject()">
+          Publish Project Now
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Modal 2: Create / Edit Supervisor -->
+  <div class="modal-overlay" id="supervisorModal">
+    <div class="modal-card">
+      <div class="modal-header">
+        <div class="modal-title" id="supervisorModalTitle">Create New Supervisor</div>
+        <button class="modal-close" onclick="closeModal('supervisorModal')">&times;</button>
+      </div>
+      <div class="modal-body">
+        <input type="hidden" id="supervisorFormId">
+
+        <div class="form-group">
+          <label class="form-label">Supervisor Full Name</label>
+          <input type="text" id="supervisorFullName" class="form-control" placeholder="e.g. Fatima Khan" required>
+        </div>
+
+        <div class="form-group">
+          <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 6px;">
+            <label class="form-label" style="margin: 0;">User ID / Login Username</label>
+            <button type="button" class="btn btn-outline btn-sm" onclick="SupervisorsView.generateRandomUserId()">
+              ⚡ Auto-Generate
+            </button>
+          </div>
+          <input type="text" id="supervisorUserId" class="form-control" placeholder="e.g. SUP-1042">
+        </div>
+
+        <div class="form-group">
+          <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 6px;">
+            <label class="form-label" style="margin: 0;">Password (Plainly visible to Admin)</label>
+            <button type="button" class="btn btn-outline btn-sm" onclick="SupervisorsView.generateRandomPassword()">
+              ⚡ Auto-Generate
+            </button>
+          </div>
+          <input type="text" id="supervisorPassword" class="form-control" placeholder="Enter password">
+          <div class="form-hint">Admin can copy this password at any time to share with the supervisor.</div>
+        </div>
+
+        <div class="form-group">
+          <label class="form-label">Assign Projects to this Supervisor:</label>
+          <div id="supervisorProjectsList" style="max-height: 140px; overflow-y: auto; padding: 10px; background: #F8FAFC; border: 1px solid var(--border-color); border-radius: var(--radius-sm);">
+            <!-- Injected via supervisors.js -->
+          </div>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button class="btn btn-outline" onclick="closeModal('supervisorModal')">Cancel</button>
+        <button class="btn btn-primary" onclick="SupervisorsView.saveSupervisor()">
+          Save Supervisor
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Modal 3: Supervisor Created Success & Copy Credentials (Section 4.3) -->
+  <div class="modal-overlay" id="supervisorSuccessModal">
+    <div class="modal-card">
+      <div class="modal-header" style="background: var(--accent-green-light); border-bottom-color: #A7F3D0;">
+        <div class="modal-title" style="color: #065F46;">
+          🎉 Supervisor Account Ready!
+        </div>
+        <button class="modal-close" onclick="closeModal('supervisorSuccessModal')">&times;</button>
+      </div>
+      <div class="modal-body" style="text-align: center; padding: 28px;">
+        <div style="font-size: 14px; color: var(--text-muted); margin-bottom: 16px;">
+          The Supervisor account was created successfully. Share these credentials with the supervisor:
+        </div>
+
+        <div style="background: #F8FAFC; border: 2px dashed #93C5FD; border-radius: var(--radius-md); padding: 18px; text-align: left; font-family: var(--font-mono); font-size: 14px; margin-bottom: 20px;">
+          <div>👤 <strong>Name:</strong> <span id="createdSupName">Fatima Khan</span></div>
+          <div style="margin-top: 6px;">🆔 <strong>User ID:</strong> <span id="createdSupUserId" style="color: var(--primary); font-weight: 700;">SUP-1042</span></div>
+          <div style="margin-top: 6px;">🔑 <strong>Password:</strong> <span id="createdSupPassword" style="color: var(--accent-green); font-weight: 700;">sup9812</span></div>
+        </div>
+
+        <button class="btn btn-success btn-lg" id="copyCredentialsBtn" style="width: 100%;">
+          📋 Copy Credentials for WhatsApp / SMS / Email
+        </button>
+      </div>
+      <div class="modal-footer">
+        <button class="btn btn-primary" onclick="closeModal('supervisorSuccessModal')">
+          Done
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Modal 4: View Team Members under Supervisor -->
+  <div class="modal-overlay" id="teamMembersModal">
+    <div class="modal-card modal-lg">
+      <div class="modal-header">
+        <div class="modal-title" id="teamMembersModalTitle">Team Members</div>
+        <button class="modal-close" onclick="closeModal('teamMembersModal')">&times;</button>
+      </div>
+      <div class="modal-body">
+        <div class="table-responsive">
+          <table class="data-table">
+            <thead>
+              <tr>
+                <th>Member Name</th>
+                <th>User ID</th>
+                <th>Password</th>
+                <th>Submissions</th>
+                <th>Action</th>
+              </tr>
+            </thead>
+            <tbody id="teamMembersTableBody">
+              <!-- Injected via supervisors.js -->
+            </tbody>
+          </table>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button class="btn btn-primary" onclick="closeModal('teamMembersModal')">Close</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Modal 5: Project Details & Questions Viewer -->
+  <div class="modal-overlay" id="projectDetailsModal">
+    <div class="modal-card">
+      <div class="modal-header">
+        <div>
+          <div class="modal-title" id="viewModalProjectTitle">Project Title</div>
+          <div style="font-size: 12px; color: var(--text-muted);" id="viewModalProjectDesc"></div>
+        </div>
+        <button class="modal-close" onclick="closeModal('projectDetailsModal')">&times;</button>
+      </div>
+      <div class="modal-body">
+        <div id="viewModalQuestionsList">
+          <!-- Injected via projects.js -->
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button class="btn btn-primary" onclick="closeModal('projectDetailsModal')">Close</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Modal 6: View Full Answers for Submission -->
+  <div class="modal-overlay" id="submissionDetailModal">
+    <div class="modal-card">
+      <div class="modal-header">
+        <div>
+          <div class="modal-title">Submission Details <span id="subDetailId">#1</span></div>
+          <div style="font-size: 12px; color: var(--text-muted);" id="subDetailProject">Project Title</div>
+        </div>
+        <button class="modal-close" onclick="closeModal('submissionDetailModal')">&times;</button>
+      </div>
+      <div class="modal-body">
+        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 8px; font-size: 12px; margin-bottom: 16px; padding: 12px; background: #F1F5F9; border-radius: var(--radius-sm);">
+          <div>Team Member: <strong id="subDetailMember"></strong></div>
+          <div>Supervisor: <strong id="subDetailSupervisor"></strong></div>
+          <div style="grid-column: span 2;">Recorded At: <strong id="subDetailTimestamp"></strong></div>
+        </div>
+
+        <div style="font-weight: 700; font-size: 13px; margin-bottom: 10px;">Submitted Answers:</div>
+        <div id="subDetailAnswersList" style="max-height: 350px; overflow-y: auto;">
+          <!-- Injected via submissions.js -->
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button class="btn btn-primary" onclick="closeModal('submissionDetailModal')">Close</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Toast Notification Container -->
+  <div class="toast-container" id="toastContainer"></div>
+
+  <!-- Scripts -->
+  <script src="/js/app.js"></script>
+  <script src="/js/dashboard.js"></script>
+  <script src="/js/projects.js"></script>
+  <script src="/js/supervisors.js"></script>
+  <script src="/js/submissions.js"></script>
+  <script src="/js/simulator.js"></script>
+  <script src="/js/api-docs.js"></script>
+
+  <script>
+    async function handleAdminPasswordChange(e) {
+      e.preventDefault();
+      const new_full_name = document.getElementById('adminFullName').value;
+      const new_user_id = document.getElementById('adminUserId').value;
+      const current_password = document.getElementById('adminCurrentPassword').value;
+      const new_password = document.getElementById('adminNewPassword').value;
+
+      try {
+        const res = await apiRequest('/api/v1/auth/change-password', {
+          method: 'POST',
+          body: JSON.stringify({ new_full_name, new_user_id, current_password, new_password })
+        });
+        if (res && res.success) {
+          showToast('Admin account details updated successfully!', 'success');
+          document.getElementById('adminCurrentPassword').value = '';
+          document.getElementById('adminNewPassword').value = '';
+          if (res.user) {
+            document.getElementById('topbarUserName').textContent = res.user.full_name;
+          }
+        }
+      } catch (err) {
+        showToast(err.message || 'Failed to update credentials', 'error');
+      }
+    }
+  </script>
+</body>
+</html>
